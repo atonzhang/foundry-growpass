@@ -61,8 +61,7 @@ contract TaskManager is IERC721Receiver {
             if (completed[user][i]) count++;
         }
         return count >= level;
-    
-
+    }
 
     function getGrowToken() external view returns (address) {
         return address(growToken);

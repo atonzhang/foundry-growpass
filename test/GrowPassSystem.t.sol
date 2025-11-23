@@ -56,7 +56,7 @@ contract GrowPassSystemTest is Test {
         
         // Check NFT level
         uint256 tokenId = 1; // 第一个铸造的 NFT
-        uint256 level = growPass.tokenLevel(tokenId);
+        uint256 level = growPass.getTokenLevel(tokenId);
         console.log("NFT Level:", level);
         assertTrue(level >= 1 && level <= 5);
     }

@@ -5,8 +5,8 @@ import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
 contract GrowPass is ERC721 {
-    uint256 public nextId;
-    mapping(uint256 => uint256) public tokenLevel; // 1-5
+    uint256 private nextId;
+    mapping(uint256 => uint256) private tokenLevel; // 1-5
 
     constructor() ERC721("GrowPass", "GPASS") {}
 
@@ -53,5 +53,13 @@ contract GrowPass is ERC721 {
         bytes memory buffer = new bytes(digits);
         while (value != 0) { digits--; buffer[digits] = bytes1(uint8(48 + value % 10)); value /= 10; }
         return string(buffer);
+    }
+
+    function getNextId() external view returns (uint256) {
+        return nextId;
+    }
+
+    function getTokenLevel(uint256 id) external view returns (uint256) {
+        return tokenLevel[id];
     }
 }

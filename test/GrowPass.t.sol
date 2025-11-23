@@ -16,7 +16,7 @@ contract GrowPassTest is Test {
     function testConstructor() public view {
         assertEq(growPass.name(), "GrowPass");
         assertEq(growPass.symbol(), "GPASS");
-        assertEq(growPass.nextId(), 0);
+        assertEq(growPass.getNextId(), 0);
     }
 
     function testMintValidLevel() public {
@@ -24,9 +24,9 @@ contract GrowPassTest is Test {
         uint256 tokenId = growPass.mint(user, 1);
         
         assertEq(tokenId, 1);
-        assertEq(growPass.nextId(), 1);
+        assertEq(growPass.getNextId(), 1);
         assertEq(growPass.ownerOf(1), user);
-        assertEq(growPass.tokenLevel(1), 1);
+        assertEq(growPass.getTokenLevel(1), 1);
     }
 
     function testMintInvalidLowLevel() public {
@@ -54,10 +54,10 @@ contract GrowPassTest is Test {
         assertEq(tokenId2, 2);
         assertEq(tokenId3, 3);
         
-        assertEq(growPass.nextId(), 3);
-        assertEq(growPass.tokenLevel(1), 1);
-        assertEq(growPass.tokenLevel(2), 3);
-        assertEq(growPass.tokenLevel(3), 5);
+        assertEq(growPass.getNextId(), 3);
+        assertEq(growPass.getTokenLevel(1), 1);
+        assertEq(growPass.getTokenLevel(2), 3);
+        assertEq(growPass.getTokenLevel(3), 5);
     }
 
     function testTokenURI() public {
