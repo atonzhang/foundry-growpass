@@ -1,0 +1,14 @@
+[profile.default]
+src = 'contracts/src'
+out = 'out'
+libs = ['lib']
+test = 'test'
+cache_path = 'cache_forge'
+
+# Remappings for external libraries
+remappings = [
+  'forge-std/=lib/forge-std/src/',
+  '@openzeppelin/=lib/openzeppelin-contracts/'
+]
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
